@@ -1,0 +1,22 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+table{
+  border-collapse: collapse;
+  width: 100%;
+ 
+}
+.caption{
+  margin: auto;
+  padding: 4px;
+  font-size: 24px;
+  width: fit-content;
+}
+th,td{
+  border: 1px solid #dddd;
+  text-align: left;
+  padding: 8px;
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 90%;
+      }
+      .caption {
+        margin: auto;
+        padding: 4px;
+        font-size: 24px;
+        width: fit-content;
+      }
+      th,
+      td {
+        border: 1px solid #dddd;
+        text-align: left;
+        padding: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <form action="/save" method="POST" enctype="multipart/form-data">
+        <div class="col-12">
+          <p>Edit user infomation</p>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label>Mã sản phẩm</label>
+            <input
+              type="text"
+              class="form-control"
+              id="maSanPham"
+              placeholder="Mã sản phẩm"
+              name="maSanPham"
+            />
+          </div>
+
+          <div class="form-group col-md-4">
+            <label>Tên sản phẩm</label>
+            <input
+              type="text"
+              class="form-control"
+              id="tenSanPham"
+              placeholder="Tên sản phẩm"
+              name="tenSanPham"
+            />
+          </div>
+
+          <div class="form-group col-md-4">
+            <label>Số lượng</label>
+            <input
+              type="text"
+              class="form-control"
+              id="soLuong"
+              placeholder="Số lượng"
+              name="soLuong"
+            />
+          </div>
+
+          <div class="form-group col-md-4">
+            <label>Hình</label>
+            <input
+              type="file"
+              class="form-control"
+              id="image"
+              placeholder="Hình ảnh"
+              name="image"
+            />
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create</button>
+      </form>
+      <form action="/delete" method="POST" enctype="multipart/form-data">
+        <table>
+          <h3 class="caption">Danh sách sản phẩm</h3>
+          <thead>
+            <tr>
+              <th>Ma San Pham</th>
+              <th>Tên San Pham</th>
+              <th>So luong</th>
+              <th>Imag</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i =0 ; i < data.length; i++) {%>
+            <tr>
+              <td><%= data[i].masp %></td>
+              <td><%= data[i].tenSanPham %></td>
+              <td><%= data[i].soLuong %></td>
+              <td>
+                <img
+                  src="<%= data[i].image %>"
+                  alt="avt_<%= data[i].maSanPham %>"
+                  width="48"
+                  height="48"
+                />
+              </td>
+
+              <td>
+                <input type="checkbox" name=<%=data[i].masp %> value=<%=data[i].masp %> />
+              </td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+        <input type="submit" value="Remove" />
+      </form>
+    </div>
+  </body>
+</html>
